@@ -28,9 +28,9 @@ public class UserEntity {
     private LocalDateTime createdAt;
     
     public UserEntity(PostSignUpDto dto) {
+        this.email = dto.getEmail();
         this.userName = dto.getUserName();
         this.password = dto.getPassword();
-        this.email = dto.getEmail();
         this.createdAt = LocalDateTime.now();
     }
 }
