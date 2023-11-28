@@ -2,8 +2,6 @@ package com.pcpos.easypos.entity;
 
 import java.time.LocalDateTime;
 
-import com.pcpos.easypos.common.constants.Eunm.OrderType;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,7 +22,6 @@ public class PaymentEntity {
     private Integer paymentIdx;
     private Integer storeIdx;
     private Integer totalPrice;
-    private OrderType orderType;
     private String state;
     private LocalDateTime createdAt;
 
