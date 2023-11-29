@@ -9,4 +9,5 @@ import com.pcpos.easypos.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     public boolean existsByEmail(String email);
     public UserEntity findByEmail(String email);
+    public void deleteByEmail(String email);
 }

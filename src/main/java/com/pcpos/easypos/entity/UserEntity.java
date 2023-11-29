@@ -3,6 +3,7 @@ package com.pcpos.easypos.entity;
 import java.time.LocalDateTime;
 
 import com.pcpos.easypos.dto.request.auth.PostSignUpDto;
+import com.pcpos.easypos.dto.request.user.PatchUserDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,5 +33,10 @@ public class UserEntity {
         this.userName = dto.getUserName();
         this.password = dto.getPassword();
         this.createdAt = LocalDateTime.now();
+    }
+
+    public UserEntity(PatchUserDto dto){
+        this.userIdx = dto.getUserIdx();
+        this.userName = dto.getUserName();
     }
 }
