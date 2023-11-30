@@ -6,5 +6,6 @@ public class ResponseMessage {
     public static final String EXIST_EMAIL = "Already existed email";
     public static final String FAIL_SIGN_IN = "Failed Sign In.";
     public static final String NOT_EXIST_USER_EAMIL = "Doesn't exist email";
+    public static final String NOT_EXIST_STORE = "Doesn't exist store";
 
 }

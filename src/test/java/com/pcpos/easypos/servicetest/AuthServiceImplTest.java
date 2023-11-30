@@ -20,12 +20,13 @@ import com.pcpos.easypos.dto.response.ResponseDto;
 import com.pcpos.easypos.dto.response.auth.PostSignUpResponseDto;
 import com.pcpos.easypos.entity.UserEntity;
 import com.pcpos.easypos.repository.UserRepository;
-import com.pcpos.easypos.service.implementation.AuthServiceimpl;
+import com.pcpos.easypos.service.AuthService;
 
 @ExtendWith(MockitoExtension.class)
-public class AuthServiceimplTest {
+public class AuthServiceImplTest {
+    
     @InjectMocks
-    private AuthServiceimpl authService;
+    private AuthService authService;
 
     @Mock
     private UserRepository userRepository;

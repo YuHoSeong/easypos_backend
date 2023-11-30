@@ -17,7 +17,7 @@ import com.pcpos.easypos.repository.UserRepository;
 import com.pcpos.easypos.service.AuthService;
 
 @Service
-public class AuthServiceimpl implements AuthService {
+public class AuthServiceImpl implements AuthService {
 
     @Autowired private TokenProvider tokenProvider;
     @Autowired private UserRepository userRepository;

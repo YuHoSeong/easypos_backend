@@ -2,6 +2,9 @@ package com.pcpos.easypos.entity;
 
 import java.time.LocalDateTime;
 
+import com.pcpos.easypos.dto.request.store.PatchStoreDto;
+import com.pcpos.easypos.dto.request.store.PostStoreDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,5 +28,20 @@ public class StoreEntity {
     private Integer openTime;
     private Integer closeTime;
     private LocalDateTime createdAt;
+
+    public StoreEntity(Integer userIdx, PostStoreDto dto){
+        this.userIdx = userIdx;
+        this.storeName = dto.getStoreName();
+        this.openTime = dto.getOpenTime();
+        this.closeTime = dto.getCloseTime();
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public void patchStore(PatchStoreDto dto){
+        this.storeName = dto.getStoreName();
+        this.openTime = dto.getOpenTime();
+        this.closeTime = dto.getCloseTime();
+
+    }
 
 }

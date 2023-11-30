@@ -35,8 +35,7 @@ public class UserEntity {
         this.createdAt = LocalDateTime.now();
     }
 
-    public UserEntity(PatchUserDto dto){
-        this.userIdx = dto.getUserIdx();
+    public void updateUser(PatchUserDto dto){
         this.userName = dto.getUserName();
     }
 }

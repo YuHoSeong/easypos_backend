@@ -26,6 +26,7 @@ public class AuthController {
     private final String SIGN_UP = "/sign-up";
     private final String SIGN_IN = "/sign-in";
 
+    // 회원가입
     @PostMapping(SIGN_UP)
     public ResponseDto<PostSignUpResponseDto> postSignUp(@Valid @RequestBody PostSignUpDto requestBody){
         log.info("SIGN_UP");
@@ -33,6 +34,7 @@ public class AuthController {
         return response;
     }
 
+    // 로그인
     @PostMapping(SIGN_IN)
     public ResponseDto<PostSignInResponseDto> postSignIn(@Valid @RequestBody PostSignInDto requestBody) {
         log.info("SIGN_IN");

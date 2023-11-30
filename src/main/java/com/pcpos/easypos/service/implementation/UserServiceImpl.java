@@ -13,11 +13,12 @@ import com.pcpos.easypos.entity.UserEntity;
 import com.pcpos.easypos.repository.UserRepository;
 import com.pcpos.easypos.service.UserService;
 
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class UserServiceimpl implements UserService{
+public class UserServiceImpl implements UserService{
 
     @Autowired UserRepository userRepository;
 
@@ -46,10 +47,12 @@ public class UserServiceimpl implements UserService{
         PatchUserResponseDto data = null;
 
         try {
-            boolean hasEmail = userRepository.existsByEmail(email);
-            if(!hasEmail) return ResponseDto.setFailed(ResponseMessage.NOT_EXIST_USER_EAMIL);
+            UserEntity userEntity = userRepository.findByEmail(email);
+            if(userEntity == null) return ResponseDto.setFailed(ResponseMessage.NOT_EXIST_USER_EAMIL);
 
-            UserEntity updatedUserEntity = userRepository.save(new UserEntity(dto));
+            userEntity.updateUser(dto);
+
+            UserEntity updatedUserEntity = userRepository.save(userEntity);
 
             data = new PatchUserResponseDto(updatedUserEntity);
         } catch (Exception e) {
@@ -62,6 +65,7 @@ public class UserServiceimpl implements UserService{
 
     // 회원 탈퇴()
     @Override
+    @Transactional
     public ResponseDto<DeleteUserResponseDto> deleteUser(String email) {
         DeleteUserResponseDto data = null;
 

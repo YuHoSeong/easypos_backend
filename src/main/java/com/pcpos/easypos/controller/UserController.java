@@ -28,26 +28,29 @@ public class UserController {
 
     private final String GET_USER = "/";
     private final String PATCH_USER = "/";
-    private final String DELETE_USER = "/{userId}";
+    private final String DELETE_USER = "/";
 
+    // 회원정보조회
     @GetMapping(GET_USER)
-    public ResponseDto<GetUserResponseDto> getUser(@AuthenticationPrincipal String Email) {
+    public ResponseDto<GetUserResponseDto> getUser(@AuthenticationPrincipal String email) {
         log.info("getUser");
-        ResponseDto<GetUserResponseDto> response = userService.getUser(Email);
+        ResponseDto<GetUserResponseDto> response = userService.getUser(email);
         return response;
     }
 
+    // 회원정보수정
     @PatchMapping(PATCH_USER)
-    public ResponseDto<PatchUserResponseDto> patchUser(@AuthenticationPrincipal String Email, @RequestBody PatchUserDto requestBody) {
+    public ResponseDto<PatchUserResponseDto> patchUser(@AuthenticationPrincipal String email, @RequestBody PatchUserDto requestBody) {
         log.info("patchUser");
-        ResponseDto<PatchUserResponseDto> response =userService.patchUser(Email, requestBody);
+        ResponseDto<PatchUserResponseDto> response =userService.patchUser(email, requestBody);
         return response;
     }
 
+    // 회원탈퇴
     @DeleteMapping(DELETE_USER)
-    public ResponseDto<DeleteUserResponseDto> deleteUser(@AuthenticationPrincipal String Email){
+    public ResponseDto<DeleteUserResponseDto> deleteUser(@AuthenticationPrincipal String email){
         log.info("deleteUser");
-        ResponseDto<DeleteUserResponseDto> response = userService.deleteUser(Email);
+        ResponseDto<DeleteUserResponseDto> response = userService.deleteUser(email);
         return response;
     }
 
