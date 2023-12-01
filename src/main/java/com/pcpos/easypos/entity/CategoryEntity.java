@@ -2,6 +2,9 @@ package com.pcpos.easypos.entity;
 
 import java.time.LocalDateTime;
 
+import com.pcpos.easypos.dto.request.category.PatchCategoryDto;
+import com.pcpos.easypos.dto.request.category.PostCategoryDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,4 +27,16 @@ public class CategoryEntity {
     private String categoryName;
     private Integer priority;
     private LocalDateTime createdAt;
+
+    public CategoryEntity(PostCategoryDto dto){
+        this.storeIdx = dto.getStoreIdx();
+        this.categoryName = dto.getCategoryName();
+        this.priority = dto.getPriority();
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public void patchCategory(PatchCategoryDto dto){
+        this.categoryName = dto.getCategoryName();
+        this.priority = dto.getPriority();
+    }
 }
