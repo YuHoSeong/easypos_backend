@@ -17,7 +17,7 @@ import com.pcpos.easypos.dto.request.category.PatchCategoryDto;
 import com.pcpos.easypos.dto.request.category.PostCategoryDto;
 import com.pcpos.easypos.dto.response.ResponseDto;
 import com.pcpos.easypos.dto.response.category.DeleteCategoryResponseDto;
-import com.pcpos.easypos.dto.response.category.GetCategoryResponseDto;
+import com.pcpos.easypos.dto.response.category.GetCategoryListResponseDto;
 import com.pcpos.easypos.dto.response.category.PatchCategoryResponseDto;
 import com.pcpos.easypos.dto.response.category.PostCategoryResponseDto;
 import com.pcpos.easypos.service.CategoryService;
@@ -36,11 +36,11 @@ public class CategoryController {
     private final String PATCH_CATEGORY = "/";
     private final String DELETE_CATEGORY = "/{categoryIdx}";
 
-    // 카테고리 조회
+    // 카테고리 리스트 조회
     @GetMapping(GET_CATEGORY)
-    public ResponseDto<List<GetCategoryResponseDto>> getCategory(@PathVariable Integer storeIdx){
+    public ResponseDto<List<GetCategoryListResponseDto>> getCategoryList(@PathVariable Integer storeIdx){
         log.info("getCategory");
-        ResponseDto<List<GetCategoryResponseDto>> response = categoryService.getCategory(storeIdx);
+        ResponseDto<List<GetCategoryListResponseDto>> response = categoryService.getCategoryList(storeIdx);
         return response;
     }
 

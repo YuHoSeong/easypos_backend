@@ -6,13 +6,13 @@ import com.pcpos.easypos.dto.request.category.PatchCategoryDto;
 import com.pcpos.easypos.dto.request.category.PostCategoryDto;
 import com.pcpos.easypos.dto.response.ResponseDto;
 import com.pcpos.easypos.dto.response.category.DeleteCategoryResponseDto;
-import com.pcpos.easypos.dto.response.category.GetCategoryResponseDto;
+import com.pcpos.easypos.dto.response.category.GetCategoryListResponseDto;
 import com.pcpos.easypos.dto.response.category.PatchCategoryResponseDto;
 import com.pcpos.easypos.dto.response.category.PostCategoryResponseDto;
 
 public interface CategoryService {
-    // 카테고리 조회
-    public ResponseDto<List<GetCategoryResponseDto>> getCategory(Integer storeIdx);
+    // 카테고리 리스트 조회
+    public ResponseDto<List<GetCategoryListResponseDto>> getCategoryList(Integer storeIdx);
     // 카테고리 등록
     public ResponseDto<PostCategoryResponseDto> postCategory(PostCategoryDto dto);
     // 카테고리 수정

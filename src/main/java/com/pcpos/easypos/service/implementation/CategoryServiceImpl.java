@@ -10,7 +10,7 @@ import com.pcpos.easypos.dto.request.category.PatchCategoryDto;
 import com.pcpos.easypos.dto.request.category.PostCategoryDto;
 import com.pcpos.easypos.dto.response.ResponseDto;
 import com.pcpos.easypos.dto.response.category.DeleteCategoryResponseDto;
-import com.pcpos.easypos.dto.response.category.GetCategoryResponseDto;
+import com.pcpos.easypos.dto.response.category.GetCategoryListResponseDto;
 import com.pcpos.easypos.dto.response.category.PatchCategoryResponseDto;
 import com.pcpos.easypos.dto.response.category.PostCategoryResponseDto;
 import com.pcpos.easypos.entity.CategoryEntity;
@@ -24,16 +24,16 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Autowired private CategoryRepository categoryRepository; 
 
-    // 카테고리 조회
+    // 카테고리 리스트 조회
     @Override
-    public ResponseDto<List<GetCategoryResponseDto>> getCategory(Integer storeIdx) {
-        List<GetCategoryResponseDto> data = null;
+    public ResponseDto<List<GetCategoryListResponseDto>> getCategoryList(Integer storeIdx) {
+        List<GetCategoryListResponseDto> data = null;
 
         try {
             List<CategoryEntity> categoryEntities = categoryRepository.findByStoreIdxOrderByPriorityDesc(storeIdx);
             if(categoryEntities == null) ResponseDto.setFailed(ResponseMessage.NOT_EXIST_CATEGORY);
 
-            data = GetCategoryResponseDto.copyList(categoryEntities);
+            data = GetCategoryListResponseDto.copyList(categoryEntities);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseDto.setFailed(ResponseMessage.DATABASE_ERROR);

@@ -23,17 +23,18 @@ public class GetStoreListResponseDto {
     private LocalDateTime createdAt;
     // todo storeImage 어떻게 할것인지
 
+    public GetStoreListResponseDto(StoreEntity storeEntity){
+        this.storeIdx = storeEntity.getStoreIdx();
+        this.storeName = storeEntity.getStoreName();
+        this.openTime = storeEntity.getOpenTime();
+        this.closeTime = storeEntity.getCloseTime();
+        this.createdAt = storeEntity.getCreatedAt();
+    }
+
     public static List<GetStoreListResponseDto> copyList(List<StoreEntity> storeEntities){
         List<GetStoreListResponseDto> list = new ArrayList<>();
         for(StoreEntity storeEntity :storeEntities){
-            list.add(
-                new GetStoreListResponseDto(
-                storeEntity.getStoreIdx(),
-                storeEntity.getStoreName(),
-                storeEntity.getOpenTime(),
-                storeEntity.getCloseTime(),
-                storeEntity.getCreatedAt())
-            );
+            list.add(new GetStoreListResponseDto(storeEntity));
         }
         return list;
     }
