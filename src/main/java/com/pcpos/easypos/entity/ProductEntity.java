@@ -2,6 +2,9 @@ package com.pcpos.easypos.entity;
 
 import java.time.LocalDateTime;
 
+import com.pcpos.easypos.dto.request.product.PatchProductDto;
+import com.pcpos.easypos.dto.request.product.PostProductDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +27,23 @@ public class ProductEntity {
     private Integer storeIdx;
     private String productName;
     private Integer price;
-    private Boolean state;
+    private boolean state;
     private LocalDateTime createdAt;
+
+    public ProductEntity(PostProductDto dto){
+        this.categoryIdx = dto.getCategoryIdx();
+        this.storeIdx = dto.getStoreIdx();
+        this.productName = dto.getProductName();
+        this.price = dto.getPrice();
+        this.state = true;
+        this.createdAt = LocalDateTime.now();
+
+    }
+
+    public void patchProduct(PatchProductDto dto){
+        this.categoryIdx = dto.getCategoryIdx();
+        this.productName = dto.getProductName();
+        this.price = dto.getPrice();
+        this.state = dto.isState();
+    }
 }
